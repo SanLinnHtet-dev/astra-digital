@@ -12,16 +12,15 @@ export const createAdminSchema = object({
     username: string().required(),
     password: string()
       .required()
-      .matches(/^[0-9]+$/, "Password must be only digits")
-      .min(6, "Password must be exactly 5 digits")
-      .max(6, "Password must be exactly 5 digits"),
+      // .matches(/^[0-9]+$/, "Password must be only digits")
+      .min(6, "Password must be exactly 6 digits")
+      .max(9, "Password must be exactly 9 digits"),
     email: string().required(),
     phoneNo: string().required(),
     roles: array().required().min(1),
-    nrc: string().required()
-        .matches(/^(0-9)+$/, "Password must be only digits")
-        .min(18, "Password must be exactly 18 digits")
-        .max(18, "Password must be exactly 18 digits"),
+    nrc_no: string().required()
+        .min(18, "NRC Number must be exactly 18 digits")
+        .max(18, "NRC Number must be exactly 18 digits"),
   }),
 });
 
@@ -30,15 +29,15 @@ export const updateAdminSchema = object({
   body: object({
     username: string().required(),
     password: string()
-      .matches(/^[0-9]+$/, "Password must be only digits")
-      .min(6, "Password must be exactly 5 digits")
-      .max(6, "Password must be exactly 5 digits"),
+      // .matches(/^[0-9]+$/, "Password must be only digits")
+      .min(6, "Password must be exactly 6 digits")
+      .max(9, "Password must be exactly 9 digits"),
     email: string().required(),
     phoneNo: string().required(),
     roles: array(),
-    nrc: string().required()
-        .min(18, "Password must be exactly 18 digits")
-        .max(18, "Password must be exactly 18 digits"),
+    nrc_no: string().required()
+        .min(18, "NRC Number must be exactly 18 digits")
+        .max(18, "NRC Number must be exactly 18 digits"),
   }),
 });
 
@@ -47,7 +46,7 @@ export const adminListFilterQuery = object({
     username: string(),
     email: string(),
     phoneNo: string(),
-    nrc: string(),
+    nrc_no: string(),
     ...paginationPayload,
   }),
 });
@@ -59,7 +58,7 @@ export const singUpAdminSchema = object({
     username: string().required(),
     email: string().required(),
     phoneNo: string().required(),
-    nrc: string().required(),
+    nrc_no: string().required(),
   }),
 });
 
