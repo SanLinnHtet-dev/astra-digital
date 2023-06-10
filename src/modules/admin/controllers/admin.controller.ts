@@ -27,8 +27,6 @@ export default class AdminController {
 
                   const { username, password, email, phoneNo, nrc } = req.body
 
-            /** process auth to request data */
-
                   const findAdmin = await AdminService.findAdminByUsernameOrEmailOrPhoneNoOrNrc(
                         username,
                         email,
@@ -44,11 +42,11 @@ export default class AdminController {
                   const createdAdmin = await Admin.create({
                         ...req.body,
                         password: hashedPassword,
-                      });
+                        });
 
                   await transaction.commit();
 
-                  successResponse(res, AppMessage.userCreated, createdAdmin);
+                  successResponse(res, AppMessage.adminCreated, createdAdmin);
             } catch (error) {
                   await transaction.rollback();
                   handleError(res, error);
@@ -61,59 +59,79 @@ export default class AdminController {
 
             try {
 
-            /**  */
-                  const adminID = get(req.params, "adminID");
+            const adminID = get(req.params, "adminID");
 
-                  const { username, password, email, phoneNo, nrc_no  } = req.body;
+            const { username, password, email, phoneNo, nrc_no  } = req.body;
 
 
-                  const findAdminID = await AdminService.findAdminById(Number(adminID));
-                  if(!findAdminID) return errorResponse(res, 404, AppMessage.badRequest)
+            const findAdminID = await AdminService.findAdminById(Number(adminID));
+            if(!findAdminID) return errorResponse(res, 404, AppMessage.badRequest)
 
-                  const findAdmin = await Admin.findOne({
-                        where: {
-                              username: {
-                                    [Op.like]: emptyValue(username as string),
-                                  },
-                                  email: {
-                                    [Op.like]: emptyValue(email as string),
-                                  },
-                                  phoneNo: {
-                                    [Op.like]: emptyValue(phoneNo as string),
-                                  },
-                                  nrc_no: {
-                                    [Op.like]: emptyValue(nrc_no as string),
-                                  },
-                        }
-                  })
+            const findAdmin = await Admin.findOne({
+                  where: {
+                        username: {
+                              [Op.like]: emptyValue(username as string),
+                              },
+                              email: {
+                              [Op.like]: emptyValue(email as string),
+                              },
+                              phoneNo: {
+                              [Op.like]: emptyValue(phoneNo as string),
+                              },
+                              nrc_no: {
+                              [Op.like]: emptyValue(nrc_no as string),
+                              },
+                  }
+            })
 
-                  if (isDuplicatedRecord(findAdmin, adminID)) return alreadyExists(res);
+            if (isDuplicatedRecord(findAdmin, adminID)) return alreadyExists(res);
 
-                  if (password) {
-                        const hashedPassword = await AuthService.encryptPassword(password);
-                        const updateCustomer = await Admin.update(
-                          {
-                            ...req.body,
-                            password: hashedPassword,
-                          },
-                
-                          { where: { id: adminID } }
-                        );
-                
-                        
-                        res.json(updateCustomer);
-                      } else {
-                
-                      /** Customer updated */
-                
-                        await Admin.update({ ...req.body }, { where: { id: adminID } });
-                      }
+      /** If password, update password */
+            if (password) {
+                  const hashedPassword = await AuthService.encryptPassword(password);
 
-                  await transaction.commit();
+                  /** update password */
+                  const updateCustomer = await Admin.update(
+                        {
+                        ...req.body,
+                        password: hashedPassword,
+                        },
+            
+                        { where: { id: adminID } }
+                  );
+            
+                  
+                  res.json(updateCustomer);
+                  } else {
+            
+                  /** Customer updated */
+            
+                  await Admin.update({ ...req.body }, { where: { id: adminID } });
+                  }
+
+            await transaction.commit();
 
                   successResponse(res, AppMessage.updated);
             } catch (error) {
                   await transaction.rollback();
+                  handleError(res, error);
+            }
+      }
+
+      /** Delete Admin account */
+      static deleteAdmin =async (req: Request, res: Response) => {
+            try {
+                  const adminID = get(req.params, "adminID");
+
+                  await Admin.destroy({
+                        where: {
+                              id: adminID
+                        }
+                  })
+
+                  successResponse(res, AppMessage.adminDelete);
+                  
+            } catch (error) {
                   handleError(res, error);
             }
       }

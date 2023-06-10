@@ -14,8 +14,8 @@ export interface ErrorResponseObj {
 
 declare module "express" {
   interface Request {
-    user?: { id: number };
-    agent?: { id: number };
+    admin?: { id: number, role_id: number };
+    merchant?: { id: number };
     customer?: { id: number };
     file?: any
   }
@@ -40,8 +40,8 @@ export type queryParam = string | ParsedQs | string[] | ParsedQs[] | undefined;
 export type CountQRes = { count: number }[];
 
 export interface TokenBasedRequest extends Request {
-  user?: { id: number };
-  agent?: { id: number };
+  admin?: { id: number };
+  merchant?: { id: number };
   customer?: { id: number };
   headers: IncomingHttpHeaders;
 }

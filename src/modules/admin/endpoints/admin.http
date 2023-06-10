@@ -1,0 +1,37 @@
+### Admin create account
+POST http://localhost:8080/api/v1/admin/create
+Content-Type: application/json
+
+{
+    "username": "Linn Htet",
+    "password": "123456",
+    "email": "lin@gmail.com",
+    "phoneNo": "09777666555",
+    "nrc_no": "12/BAHANA(N)123456",
+    "image": "",
+    "dob": "2001-05-16 21:22:46.340000",
+    "gender": "MALE",
+    "address_street": "n0-123, bla bal",
+    "address_township": "Bahan",
+    "address_city": "Yangon",
+    "address_country": "Myanmar",
+    "lat": "20.34345466576",
+    "long": "37.32454365454",
+    "role_id": 1,
+}
+
+### Update admin account
+PATCH http://localhost:8080/api/v1/admin/update/1
+Content-Type: application/json
+
+{
+    "username": "Linn Htet",
+    "password": "123456",
+    "email": "lin@gmail.com",
+    "phoneNo": "09777666555",
+    "nrc_no": "12/BAHANA(N)123456",
+    "role_id": 1
+}
+
+### Delete admin account
+DELETE http://localhost:8080/api/v1/admin/delete/1

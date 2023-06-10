@@ -1,3 +1,7 @@
+import Admin from "./admin.model";
+import Permission from "./permission.model";
+import Role from "./role.model";
+
 export enum GENDER {
   "MALE" = "MALE",
   "FEMALE" = "FEMALE",
@@ -45,4 +49,12 @@ export enum TYPE {
   "MAN" = "MAN",
   "WOMEN" = "WOMEN",
   "CHILD" = "CHILD",
+}
+
+export interface IRoleWithUsers extends Role {
+  admins: Admin[];
+}
+
+export interface IRoleWithPermissions extends Role {
+  permissions: Permission[];
 }

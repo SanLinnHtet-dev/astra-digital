@@ -29,7 +29,7 @@ export default class AdminService {
   };
 
   static findAdminByUsername_binarySearch = async (username: string) => {
-    const q = `select * from user where username LIKE BINARY ? limit 1`;
+    const q = `select * from admin where username LIKE BINARY ? limit 1`;
 
     const [admin] = await sequelize.query(q, {
       replacements: [username],

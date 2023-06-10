@@ -4,8 +4,8 @@ import validateRequest from "../../../middlewares/validate_request";
 // import { paginationQuery } from "../../../utils/common.schema";
 import {
   createAdminSchema,
-//   updateUserSchema,
-//   userIdParam,
+  updateAdminSchema,
+  adminIdParam,
 //   userListFilterQuery,
 } from "../schemas/admin.schema";
 
@@ -23,17 +23,17 @@ router.post(
 //   UserController.singUp
 // );
 
-// router.patch(
-//   "/v1/users/update/:userID",
-//   [validateRequest(updateUserSchema)],
-//   UserController.updateUser
-// );
+router.patch(
+  "/v1/users/update/:adminID",
+  [validateRequest(updateAdminSchema)],
+  AdminController.updateAdminAccount
+);
 
-// router.delete(
-//   "/v1/users/delete/:userID",
-//   [validateRequest(userIdParam)],
-//   UserController.deleteUser
-// );
+router.delete(
+  "/v1/users/delete/:adminID",
+  [validateRequest(adminIdParam)],
+  AdminController.deleteAdmin
+);
 
 // router.get(
 //   "/v1/users/user_roles_by_user_id/:userID",

@@ -27,9 +27,9 @@ const AppMessage = {
   listSuccessful: [`List`, ``, ``],
 
   //admin
-  userCreated: ["Admin Account Created", "အကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员账号已存在"],
-  userUpdate: ["User information has been updated", "အချက်အလက်များကို ပြင်ဆင်ပြီးပါပြီ", "管理员信息已更新"],
-  userDelete: ["user deleted", "အကောင့်ဖျက်သိမ်းခြင်းလုပ်ဆောင်ချက် ပြီးပါပြီ", "管理员已删除"],
+  adminCreated: ["Admin Account Created", "အကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员账号已存在"],
+  adminUpdate: ["Admin information has been updated", "အချက်အလက်များကို ပြင်ဆင်ပြီးပါပြီ", "管理员信息已更新"],
+  adminDelete: ["Admin deleted", "အကောင့်ဖျက်သိမ်းခြင်းလုပ်ဆောင်ချက် ပြီးပါပြီ", "管理员已删除"],
 
   //admin wallet
   // walletCreated: ["Admin Wallet created", "ငွေအကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员钱包已创建"],
@@ -59,9 +59,9 @@ const AppMessage = {
   // forgetPassword: ["Forget password is successful", "", ""],
 
 
-  // //Login
-  // invalidCredentials: ["Invalid username or password", " အမည် (သို့) လျှို့ဝှက်ကုဒ် မှားနေပါသည်", "无效用户名称或密码"],
-  // validCredentials: ["Successfully login", "အောင်မြင်သည်" ,"登录成功"],
+  //Login
+  invalidCredentials: ["Invalid username or password", " အမည် (သို့) လျှို့ဝှက်ကုဒ် မှားနေပါသည်", "无效用户名称或密码"],
+  validCredentials: ["Successfully login", "အောင်မြင်သည်" ,"登录成功"],
   
   // // customer order
   // customerOrderApproved: ['Customer order has been approved', 'သင်၏ Order ကို လက်ခံပြီးပါပြီ', ''],
@@ -92,6 +92,10 @@ const AppMessage = {
 
   // //currency pair
   // currencyPairDelete: ['Currency Pair deleted', '', ''],
+
+    //Status
+    statusOn: ['Status on', '', ''],
+    statusOff: ['Status off', '', ''],
 
 };
 

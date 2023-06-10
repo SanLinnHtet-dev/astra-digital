@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 // import crypto from 'crypto';
 export default class AuthService {
+
   static encryptPassword = async (password: string) => {
     const salt = await bcrypt.genSalt(
       process.env.SALT ? +process.env.SALT : 10
@@ -42,7 +43,7 @@ export default class AuthService {
       process.env.ACCESS_TOKEN_SECRET || "Secret",
       {
         algorithm: "HS256",
-        expiresIn: "6hr",
+        expiresIn: "24hr",
       }
     );
 

@@ -50,7 +50,6 @@ module.exports = {
         updatedAt: "2023-04-20 21:22:46.340000",
       },
       {
-        agentLevelID: 1,
         username: "merchant_user3",
         password: merchantPassword,
         phoneNo: "09435636",

@@ -7,7 +7,7 @@ module.exports = {
     const salt = await bcrypt.genSalt(+process.env.SALT);
     const adminPassword = bcrypt.hashSync("123456", salt);
 
-    await queryInterface.bulkInsert("user", [
+    await queryInterface.bulkInsert("admin", [
       {
         username: "admin_user",
         role_id: 1,

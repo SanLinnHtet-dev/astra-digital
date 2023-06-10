@@ -3,15 +3,13 @@ import {
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
-  Model
+  Model,
 } from "sequelize";
 import { sequelize } from ".";
 
 class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
   declare id: CreationOptional<number>;
   declare roleName: string;
-  declare uri: string;
-  declare isChildRole: CreationOptional<boolean>;
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
 }
@@ -23,20 +21,10 @@ Role.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    uri: {
-      type: DataTypes.STRING,
-      unique: "uniqueTag",
-      allowNull: false,
-    },
     roleName: {
       type: DataTypes.STRING,
       unique: "uniqueTag",
       allowNull: false,
-    },
-    isChildRole: {
-      // details page roles
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
     },
     createdAt: {
       type: DataTypes.DATE(6),

@@ -1,6 +1,5 @@
 import Admin from "../models/admin.model";
 import Role from "../models/role.model";
-import Admin_Roles from "../models/admin_role.model";
 import Color from "../models/color.model";
 import Customer from "../models/customer.model";
 import BrandType from "../models/brand_type.model";
@@ -20,12 +19,13 @@ import Blog from "../models/blog.model";
 import Cart from "../models/cart.model";
 import Cuopon from "../models/coupon.model";
 import ProductCart from "../models/product_cart.model";
+import Permission from "../models/permission.model";
+import RolePermission from "../models/role_permission.model";
 
 
 export const modelList = [
   Admin,
   Role,
-  Admin_Roles,
   Color,
   Customer,
   BrandType,
@@ -45,4 +45,6 @@ export const modelList = [
   Cart,
   Cuopon,
   ProductCart,
+  Permission,
+  RolePermission,
 ];

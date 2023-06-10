@@ -9,6 +9,8 @@ import "reflect-metadata";
 import fileUpload from "express-fileupload";
 import { modelList } from "./utils/modelList";
 import AdminRoute from "./modules/admin/routes/admin.routes"
+import AuthRouter from "./modules/auth/route/auth.routes"
+import AdminEntryRoute from "./modules/admin/routes/admin_to_entry.routes"
 
 
 
@@ -42,6 +44,8 @@ app.use(
 modelList;
 
 app.use("/api", AdminRoute);
+app.use("/api", AuthRouter);
+app.use("/api", AdminEntryRoute);
 
 
 app.use(notFound);

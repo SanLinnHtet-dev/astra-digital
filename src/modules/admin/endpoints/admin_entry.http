@@ -1,0 +1,40 @@
+### Admin create to entry account
+POST http://localhost:8080/api/v1/admin/entry/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0NDE4NjQ4LCJleHAiOjE2ODQ0NDAyNDh9.j1UT18YLoayzyjPvSeYInpk3dYzPAR_WKJzdtmdi9iM
+
+{
+    "username": "entry_user",
+    "password": "123457",
+    "email": "entry@gmail.com",
+    "phoneNo": "097776665599",
+    "nrc_no": "12/BAHANA(N)123457",
+    "image": "",
+    "dob": "2001-05-16 21:22:46.340000",
+    "gender": "MALE",
+    "address_street": "n0-123, bla bal",
+    "address_township": "Bahan",
+    "address_city": "Yangon",
+    "address_country": "Myanmar",
+    "lat": "20.34345466576",
+    "long": "37.32454365454",
+}
+
+
+### Update admin to entry account
+PATCH http://localhost:8080/api/v1/admin/entry/update/1
+Content-Type: application/json
+
+{
+    "username": "entry_user",
+    "password": "123457",
+    "email": "entry@gmail.com",
+    "phoneNo": "097776665599",
+    "nrc_no": "12/BAHANA(N)123457",
+}
+
+###  Admin status on and off to customer
+PUT http://localhost:8080/api/v1/admin/status_entry/1
+
+### Admin delete to entry account 
+DELETE http://localhost:8080/api/v1/admin/entry/delete/1
