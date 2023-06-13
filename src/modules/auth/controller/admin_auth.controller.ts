@@ -16,7 +16,8 @@ import schedule from "node-schedule";
 import moment from "moment";
 
 export default class AdminAuthController {
-  /*User Login */
+  
+  /*Admin Login */
   static admin_login = async (req: Request, res: Response) => {
     try {
       const { username, password } = req.body;

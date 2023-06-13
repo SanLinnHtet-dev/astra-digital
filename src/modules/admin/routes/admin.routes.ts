@@ -8,6 +8,7 @@ import {
   adminIdParam,
 //   userListFilterQuery,
 } from "../schemas/admin.schema";
+// import admin_jwt from "../../../middlewares/admin_jwt";
 
 const router = express.Router();
 
@@ -24,13 +25,13 @@ router.post(
 // );
 
 router.patch(
-  "/v1/users/update/:adminID",
+  "/v1/admin/update/:adminID",
   [validateRequest(updateAdminSchema)],
   AdminController.updateAdminAccount
 );
 
 router.delete(
-  "/v1/users/delete/:adminID",
+  "/v1/admin/delete/:adminID",
   [validateRequest(adminIdParam)],
   AdminController.deleteAdmin
 );

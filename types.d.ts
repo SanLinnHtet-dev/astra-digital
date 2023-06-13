@@ -17,6 +17,8 @@ declare module "express" {
     admin?: { id: number, role_id: number };
     merchant?: { id: number };
     customer?: { id: number };
+    entry_admin?: { id: number };
+    entry_merchant?: { id: number };
     file?: any
   }
 }
@@ -41,6 +43,8 @@ export type CountQRes = { count: number }[];
 
 export interface TokenBasedRequest extends Request {
   admin?: { id: number };
+  entry_admin?: { id: number };
+  entry_merchant?: { id: number };
   merchant?: { id: number };
   customer?: { id: number };
   headers: IncomingHttpHeaders;

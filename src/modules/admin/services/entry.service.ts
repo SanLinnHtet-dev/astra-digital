@@ -11,7 +11,7 @@ export default class EntryAdminService {
     phoneNo: string,
     nrc_no: string,
   ) => {
-    const admin = await EntryAdmin.findOne({
+    const entry_admin = await EntryAdmin.findOne({
       where: {
         [Op.or]: {
           username,
@@ -23,29 +23,29 @@ export default class EntryAdminService {
       raw: true,
     });
 
-    if (!admin) return null;
+    if (!entry_admin) return null;
 
-    return admin;
+    return entry_admin;
   };
 
   static findEntryByUsername_binarySearch = async (username: string) => {
     const q = `select * from entry_admin where username LIKE BINARY ? limit 1`;
 
-    const [entryAdmin] = await sequelize.query(q, {
+    const [entry_admin] = await sequelize.query(q, {
       replacements: [username],
       type: QueryTypes.SELECT,
     });
 
-    if (!entryAdmin) return null;
+    if (!entry_admin) return null;
 
-    return entryAdmin;
+    return entry_admin;
   };
 
   static findEntryAdminById = async (id: number) => {
-    const entryAdmin = await EntryAdmin.findByPk(id, { raw: true });
+    const entry_admin = await EntryAdmin.findByPk(id, { raw: true });
 
-    if (!entryAdmin) throw new AppError(AppMessageModelNotFound("EntryAdmin"), 404);
+    if (!entry_admin) throw new AppError(AppMessageModelNotFound("EntryAdmin"), 404);
 
-    return entryAdmin;
+    return entry_admin;
   };
 }

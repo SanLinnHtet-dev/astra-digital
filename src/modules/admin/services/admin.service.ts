@@ -3,6 +3,7 @@ import Admin from "../../../models/admin.model";
 import AppError from "../../../utils/appError";
 import { AppMessageModelNotFound } from "../../../constants/message.constant";
 import { sequelize } from "../../../models";
+import Role from "../../../models/role.model";
 
 export default class AdminService {
   static findAdminByUsernameOrEmailOrPhoneNoOrNrc = async (
@@ -42,7 +43,10 @@ export default class AdminService {
   };
 
   static findAdminById = async (id: number) => {
-    const admin = await Admin.findByPk(id, { raw: true });
+    const admin = await Admin.findByPk(id, {
+      include: [{ model: Role, as: "role" }],
+      raw: true,
+    });
 
     if (!admin) throw new AppError(AppMessageModelNotFound("Admin"), 404);
 

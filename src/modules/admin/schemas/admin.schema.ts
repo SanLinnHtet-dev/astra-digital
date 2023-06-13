@@ -33,9 +33,6 @@ export const updateAdminSchema = object({
       .max(9, "Password must be exactly 9 digits"),
     email: string().required(),
     phoneNo: string().required(),
-    nrc_no: string().required()
-        .min(18, "NRC Number must be exactly 18 digits")
-        .max(18, "NRC Number must be exactly 18 digits"),
   }),
 });
 

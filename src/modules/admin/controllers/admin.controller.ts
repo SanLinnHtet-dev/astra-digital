@@ -61,7 +61,7 @@ export default class AdminController {
 
             const adminID = get(req.params, "adminID");
 
-            const { username, password, email, phoneNo, nrc_no  } = req.body;
+            const { username, password, email, phoneNo } = req.body;
 
 
             const findAdminID = await AdminService.findAdminById(Number(adminID));
@@ -71,16 +71,13 @@ export default class AdminController {
                   where: {
                         username: {
                               [Op.like]: emptyValue(username as string),
-                              },
-                              email: {
+                        },
+                        email: {
                               [Op.like]: emptyValue(email as string),
-                              },
-                              phoneNo: {
+                        },
+                        phoneNo: {
                               [Op.like]: emptyValue(phoneNo as string),
-                              },
-                              nrc_no: {
-                              [Op.like]: emptyValue(nrc_no as string),
-                              },
+                        },
                   }
             })
 
@@ -91,7 +88,7 @@ export default class AdminController {
                   const hashedPassword = await AuthService.encryptPassword(password);
 
                   /** update password */
-                  const updateCustomer = await Admin.update(
+                  const updateAdmin = await Admin.update(
                         {
                         ...req.body,
                         password: hashedPassword,
@@ -101,7 +98,7 @@ export default class AdminController {
                   );
             
                   
-                  res.json(updateCustomer);
+                  res.json(updateAdmin);
                   } else {
             
                   /** Customer updated */

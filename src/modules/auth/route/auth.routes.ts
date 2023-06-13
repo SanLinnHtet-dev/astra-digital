@@ -1,10 +1,10 @@
 import express from "express";
 // import CustomerLoginRouter from '../controllers/customer_auth.controller'
-// import AgentAuthController from "../controllers/agent_auth.controller";
 import validateRequest from "../../../middlewares/validate_request";
 import { credentialSchema, qrConfirmSchema } from "../schema/auth.schema";
 import AdminAuthController from "../controller/admin_auth.controller";
 import admin_jwt from "../../../middlewares/admin_jwt";
+import MerchantAuthController from "../controller/merchant_auth.controller";
 
 const router = express.Router();
 
@@ -26,10 +26,10 @@ router.post(
       AdminAuthController.admin_qrConfirm
 );
 
-// router.post(
-//       "/v1/auth/agent_login",
-//       [validateRequest(credentialSchema)],
-//       AgentAuthController.agent_login
-// );
+router.post(
+      "/v1/auth/merchant_login",
+      [validateRequest(credentialSchema)],
+      MerchantAuthController.merchant_login
+);
 
 export default router;

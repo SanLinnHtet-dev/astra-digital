@@ -31,6 +31,11 @@ const AppMessage = {
   adminUpdate: ["Admin information has been updated", "အချက်အလက်များကို ပြင်ဆင်ပြီးပါပြီ", "管理员信息已更新"],
   adminDelete: ["Admin deleted", "အကောင့်ဖျက်သိမ်းခြင်းလုပ်ဆောင်ချက် ပြီးပါပြီ", "管理员已删除"],
 
+  //Merchant
+  merchantCreated: ["Merchant Account Created", "အကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员账号已存在"],
+  merchantUpdate: ["Merchant information has been updated", "အချက်အလက်များကို ပြင်ဆင်ပြီးပါပြီ", "管理员信息已更新"],
+  merchantDelete: ["Merchant deleted", "အကောင့်ဖျက်သိမ်းခြင်းလုပ်ဆောင်ချက် ပြီးပါပြီ", "管理员已删除"],
+
   //admin wallet
   // walletCreated: ["Admin Wallet created", "ငွေအကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员钱包已创建"],
   // walletNotFound: ["Admin Wallet Account not found", " သင်၏ငွေအကောင့်ကို မတွေ့ရှိပါ။", "管理员钱包不存在"],
