@@ -1,39 +1,39 @@
 import express from "express"
-import MerchantController from "../controller/merchant.controller";
+import EntryMerchantController from "../controller/merchant_to_entry.controller";
 import validateRequest from "../../../middlewares/validate_request";
 // import { paginationQuery } from "../../../utils/common.schema";
 import {
-  createMerchantSchema,
-  updateMerchantSchema,
-  merchantIdParam
+      createEntryMerchantSchema,
+      updateEntryMerchantSchema,
+      entryMerchantIdParam,
 //   userListFilterQuery,
-} from "../schemas/merchant.schema";
-import merchant_jwt from "../../../middlewares/merchant_jwt";
+} from "../schemas/entry_merchant.schema";
 
 const router = express.Router();
 
 router.post(
-  "/v1/merchant/create",
-  [validateRequest(createMerchantSchema)],
-  MerchantController.createMerchant
+  "/v1/merchant/entry/create",
+  [validateRequest(createEntryMerchantSchema)],
+  EntryMerchantController.createEntryMerchant
 );
 
-// router.post(
-//   "/v1/users/singup",
-//   [validateRequest(singUpUserSchema)],
-//   UserController.singUp
-// );
 
-router.patch(
-  "/v1/merchant/update/:merchantID",
-  [validateRequest(updateMerchantSchema), merchant_jwt],
-  MerchantController.updateMerchantAccount
+router.put(
+  "/v1/merchant/entry/update/:entryMerchantID",
+  [validateRequest(updateEntryMerchantSchema)],
+  EntryMerchantController.updatEntryeMerchantAccount
+);
+
+router.put(
+      "/v1/merchant/status_entry/:entryMerchantID",
+      [validateRequest(entryMerchantIdParam)],
+      EntryMerchantController.statusOnOffToggleEntry
 );
 
 router.delete(
-  "/v1/merchant/delete/:merchantID",
-  [validateRequest(merchantIdParam)],
-  MerchantController.deleteMerchant
+  "/v1/merchant/entry/delete/:entryMerchantID",
+  [validateRequest(entryMerchantIdParam)],
+  EntryMerchantController.deleteEntryMerchant
 );
 
 // router.get(

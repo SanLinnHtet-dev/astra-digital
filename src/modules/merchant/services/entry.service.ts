@@ -5,8 +5,7 @@ import { AppMessageModelNotFound } from "../../../constants/message.constant";
 import { sequelize } from "../../../models";
 
 export default class EntryMerchantService {
-  static findEntryMerchantByUsernameOrEmailOrPhoneNoOrNrc = async (
-    username: string,
+  static findEntryMerchantByEmailOrPhoneNoOrNrc = async (
     email: string,
     phoneNo: string,
     nrc_no: string,
@@ -14,7 +13,6 @@ export default class EntryMerchantService {
     const entry_merchant = await EntryMerchant.findOne({
       where: {
         [Op.or]: {
-          username,
           email,
           phoneNo,
           nrc_no,
@@ -28,7 +26,7 @@ export default class EntryMerchantService {
   };
 
   static findEntryMerchantByUsername_binarySearch = async (username: string) => {
-    const q = `select * from entry_admin where username LIKE BINARY ? limit 1`;
+    const q = `select * from entry_merchant where username LIKE BINARY ? limit 1`;
 
     const [entry_merchant] = await sequelize.query(q, {
       replacements: [username],

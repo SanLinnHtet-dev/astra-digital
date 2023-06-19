@@ -16,6 +16,7 @@ import errorResponse from "../../../utils/errorResponse";
 import { initAccessControl } from "../../../utils/access_control";
 
 export default class RoleController {
+  
   /* create role */
   static createRole = async (req: Request, res: Response) => {
     const transaction = await sequelize.transaction();
@@ -198,4 +199,5 @@ export default class RoleController {
       handleError(res, error);
     }
   };
+
 }
