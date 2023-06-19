@@ -25,6 +25,7 @@ const AppMessage = {
   codeDoesNotMatch: [`Code doesn't match`, '', ''],
   cannotLogin: [`Login unavailable, try again in 30 minutes`, ``, ``],
   listSuccessful: [`List`, ``, ``],
+  deleted: [`Deleted`, `ဖျက်သိမ်းခဲ့သည်`, ``],
 
   //admin
   adminCreated: ["Admin Account Created", "အကောင့် အောင်မြင်စွာ ဖွင့်ပြီးပါပြီ", "管理员账号已存在"],

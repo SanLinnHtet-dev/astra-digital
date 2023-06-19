@@ -20,12 +20,11 @@ export default class MerchantService {
           nrc_no,
         },
       },
-      raw: true,
     });
 
     if (!merchant) return null;
 
-    return merchant;
+    return merchant.toJSON();
   };
 
   static findMerchantByUsername_binarySearch = async (username: string) => {
@@ -42,10 +41,10 @@ export default class MerchantService {
   };
 
   static findMerchantById = async (id: number) => {
-    const merchant = await Merchant.findByPk(id, { raw: true });
+    const merchant = await Merchant.findByPk(id);
 
     if (!merchant) throw new AppError(AppMessageModelNotFound("Admin"), 404);
 
-    return merchant;
+    return merchant.toJSON();
   };
 }

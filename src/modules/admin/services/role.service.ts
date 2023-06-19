@@ -17,7 +17,7 @@ export default class RoleService {
 
     if (!role) throw new AppError(AppMessageModelNotFound("Role"), 404);
 
-    return role;
+    return role.toJSON();
   };
 
   static findRoleByRoleName = async (roleName: string) => {
@@ -25,11 +25,10 @@ export default class RoleService {
       where: {
         roleName,
       },
-      raw: true,
     });
 
     if (!role) return null;
-    return role;
+    return role.toJSON();
   };
 
   static findRolePermissionByRoleId = async (role_id: number) => {

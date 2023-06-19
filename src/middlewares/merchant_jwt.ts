@@ -26,6 +26,8 @@ const merchant_jwt: ReqHandler = (
     async (err: TokenVerifyError, merchant: TokenVerifyPayload) => {
       if (err) return errorResponse(res, 400, err.message);
 
+      if (merchant.type !== "merchant") errorResponse(res, 403, AppMessage.unauthorized);
+
       merchant = await MerchantService.findMerchantById(merchant.id);
 
       req.merchant = merchant;

@@ -20,12 +20,11 @@ export default class EntryMerchantService {
           nrc_no,
         },
       },
-      raw: true,
     });
 
     if (!entry_merchant) return null;
 
-    return entry_merchant;
+    return entry_merchant.toJSON();
   };
 
   static findEntryMerchantByUsername_binarySearch = async (username: string) => {
@@ -42,10 +41,10 @@ export default class EntryMerchantService {
   };
 
   static findEntryMerchantById = async (id: number) => {
-    const entry_merchant = await EntryMerchant.findByPk(id, { raw: true });
+    const entry_merchant = await EntryMerchant.findByPk(id);
 
     if (!entry_merchant) throw new AppError(AppMessageModelNotFound("EntryMerchant"), 404);
 
-    return entry_merchant;
+    return entry_merchant.toJSON();
   };
 }

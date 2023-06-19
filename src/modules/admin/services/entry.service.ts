@@ -20,12 +20,11 @@ export default class EntryAdminService {
           nrc_no,
         },
       },
-      raw: true,
     });
 
     if (!entry_admin) return null;
 
-    return entry_admin;
+    return entry_admin.toJSON();
   };
 
   static findEntryByUsername_binarySearch = async (username: string) => {
@@ -42,10 +41,10 @@ export default class EntryAdminService {
   };
 
   static findEntryAdminById = async (id: number) => {
-    const entry_admin = await EntryAdmin.findByPk(id, { raw: true });
+    const entry_admin = await EntryAdmin.findByPk(id);
 
     if (!entry_admin) throw new AppError(AppMessageModelNotFound("EntryAdmin"), 404);
 
-    return entry_admin;
+    return entry_admin.toJSON();
   };
 }

@@ -21,12 +21,11 @@ export default class AdminService {
           nrc_no,
         },
       },
-      raw: true,
     });
 
     if (!admin) return null;
 
-    return admin;
+    return admin.toJSON();
   };
 
   static findAdminByUsername_binarySearch = async (username: string) => {
@@ -44,12 +43,11 @@ export default class AdminService {
 
   static findAdminById = async (id: number) => {
     const admin = await Admin.findByPk(id, {
-      include: [{ model: Role, as: "role" }],
-      raw: true,
+      include: [{ model: Role, as: "role" }]
     });
 
     if (!admin) throw new AppError(AppMessageModelNotFound("Admin"), 404);
 
-    return admin;
+    return admin.toJSON();
   };
 }

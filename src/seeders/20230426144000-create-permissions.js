@@ -14,6 +14,7 @@ module.exports = {
 
     if (!permissionCount) {
       await queryInterface.bulkInsert("permission", [
+        
         // admins
         {
           name: "View",
@@ -43,6 +44,37 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+
+        // merchant
+        {
+          name: "View",
+          action: "readAny",
+          group: "Merchant",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Create",
+          action: "createAny",
+          group: "Merchant",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Update",
+          action: "updateAny",
+          group: "Merchant",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Delete",
+          action: "deleteAny",
+          group: "Merchant",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
       ]);
     }
   },

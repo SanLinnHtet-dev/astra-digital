@@ -7,10 +7,10 @@ import {
   TokenVerifyPayload,
 } from "../../types";
 import errorResponse from "../utils/errorResponse";
-import AdminService from "../modules/admin/services/admin.service";
 import AppMessage from "../constants/message.constant";
+import CustomerService from "../modules/customer/services/customer.service";
 
-const admin_jwt: ReqHandler = (
+const customer_jwt: ReqHandler = (
   req: TokenBasedRequest,
   res: Response,
   next: NextFunction
@@ -23,19 +23,19 @@ const admin_jwt: ReqHandler = (
   jwt.verify(
     token,
     process.env.ACCESS_TOKEN_SECRET as string,
-    async (err: TokenVerifyError, admin: TokenVerifyPayload) => {
+    async (err: TokenVerifyError, customer: TokenVerifyPayload) => {
       if (err) return errorResponse(res, 400, err.message);
 
-      if (admin.type !== "admin") errorResponse(res, 403, AppMessage.unauthorized);
+      if (customer.type !== "customer")
+        return errorResponse(res, 403, AppMessage.unauthorized);
 
-      admin = await AdminService.findAdminById(admin.id);
+      customer = await CustomerService.findCustomerById(customer.id);
 
-      req.admin = admin;
+      req.customer = customer;
       next();
     }
   );
 
-  // next();
 };
 
-export default admin_jwt;
+export default customer_jwt;

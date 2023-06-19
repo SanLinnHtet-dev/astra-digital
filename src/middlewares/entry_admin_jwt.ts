@@ -26,6 +26,9 @@ const entryAdmin_jwt: ReqHandler = (
     async (err: TokenVerifyError, entry_admin: TokenVerifyPayload) => {
       if (err) return errorResponse(res, 400, err.message);
 
+      if (entry_admin.type !== "entry_admin") errorResponse(res, 403, AppMessage.unauthorized);
+
+
       entry_admin = await EntryAdminService.findEntryAdminById(entry_admin.id);
 
       req.entry_admin = entry_admin;

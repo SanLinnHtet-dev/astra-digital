@@ -36,7 +36,9 @@ export enum ADMIN_ORDER_TYPE {
 
 export enum LOGIN_TYPE {
   "ADMIN" = "ADMIN",
+  "ENTRY_ADMIN" = "ENTRY_ADMIN",
   "MERCHANT" = "MERCHANT",
+  "ENTRY_MERCHANT" = "ENTRY_MERCHANT",
   "CUSTOMER" = "CUSTOMER",
 }
 
